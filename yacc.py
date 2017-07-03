@@ -70,8 +70,8 @@ parser = yacc.yacc(debug=True,debuglog=log)
 
 while True:
     try:
-        # s = input('calc > ')   # use raw_input() on Python 2
-        s = raw_input('yacc1 > ')
+        s = input('yacc1 > ')   # use raw_input() on Python 2
+        # s = raw_input('yacc1 > ')
         parser.parse(s)
     except EOFError:
         break
