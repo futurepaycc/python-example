@@ -1,17 +1,6 @@
 #coding:utf-8
 
 # 还有点小错误，必须加以改正
-
-
-import logging
-logging.basicConfig(
-    level = logging.DEBUG,
-    filename = "parselog.txt",
-    filemode = "w",
-    format = "%(filename)10s:%(lineno)4d:%(message)s"
-)
-log = logging.getLogger()
-
 tokens=(
     "NOUN","PRONOUN","VERB"
 )
@@ -22,6 +11,7 @@ def t_VERB(t):
 
 def t_NOUN(t):
     r"dog|man|woman"
+    print(t.value + " is a noun")
 
 def t_PRONOUN(t):
     r"i|he|she|item"
@@ -43,35 +33,32 @@ lexer = lex.lex()
 
 ################句法部分#####################3
 def p_statement_sentence(p):
-    'statement : pronoun verb noun'
-    print(p+" is a sentence")
+    'statement : expression'
+    print(p[1])
 
+def p_expression_binop(p):
+    '''expression : expression VERB expression'''
+    p[0] = p[1] + p[2]+p[3]
 
-def p_noun(p):
-    'noun : NOUN'
+# 基本表达式 名词
+def p_expression_noun(p):
+    'expression : NOUN'
+    p[0] = p[1]
 
-def p_pronoun(p):
-    'pronoun : PRONOUN'
-
-def p_verb(p):
-    'verb : VERB'
-
-# def p_expression_noun(p):
-#     "expression : NOUN"
+# 基本表达式 名词
+def p_expression_pronoun(p):
+    'expression : PRONOUN'
+    p[0] = p[1]    
 
 def p_error(p):
     print("Syntax error at '%s'" % p)
-    # parser.errok()
-    # yacc.yacc().errorok()
-    
 
 import ply.yacc as yacc
-parser = yacc.yacc(debug=True,debuglog=log)
+parser = yacc.yacc()
 
 while True:
     try:
-        s = input('yacc1 > ')   # use raw_input() on Python 2
-        # s = raw_input('yacc1 > ')
+        s = input('yacc1 > ')
         parser.parse(s)
     except EOFError:
         break
