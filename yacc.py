@@ -41,29 +41,30 @@ import ply.lex as lex
 lexer = lex.lex()
 
 
-# 句法部分#####################3
-def p_statement_expr(p):
-    'statement : expression'
-    print(p[1]+" is a valid sentence")
+# 句法部分#####################
+def p_statement_default(p):
+    'statement : PRONOUN VERB NOUN'
+    print(p[1]+p[2]+p[3]+"是有效语句") #toString对应的是str()
 
 
-def p_expression_binop(p):
-    'expression : expression VERB expression'
-    p[0] = p[1] + p[2] + p[3]
-
-# 基本表达式 名词
+# def p_statement_expr(p):
+#     'statement : expression'
+#     print(p[1]+" is a valid sentence")
 
 
-def p_expression_noun(p):
-    'expression : NOUN'
-    p[0] = p[1]
+# def p_expression_binop(p):
+#     'expression : expression VERB expression'
+#     p[0] = p[1] + p[2] + p[3]
 
-# 基本表达式 名词
+# # 基本表达式 名词
+# def p_expression_noun(p):
+#     'expression : NOUN'
+#     p[0] = p[1]
 
-
-def p_expression_pronoun(p):
-    'expression : PRONOUN'
-    p[0] = p[1]
+# # 基本表达式 名词
+# def p_expression_pronoun(p):
+#     'expression : PRONOUN'
+#     p[0] = p[1]
 
 
 def p_error(p):
