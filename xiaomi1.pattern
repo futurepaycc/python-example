@@ -14,7 +14,7 @@ ${orderTime:yyyy--MM-dd HH:mm:ss}
 ${tableNo:\d}
 ${serviceNo:\d}
 
-#模式三
+#模式三 以行号(line number,有正负)为中心定位，结合列定位
 merchantName:L0,(\w)
 orderTime:L1,订单时间： ('yyyy-MM-dd HH:mm:ss')
 tableNo:L2,桌号:(\d)
