@@ -1,0 +1,15 @@
+##########建立模式模板，看看需不需要yacc介入#####
+
+#模式一
+merchant_name: L1
+body_start_split: L6
+body_content_define_line:L7
+#这一行可以直接替换成自己的定义的名字，不用匹配
+body_content_define:商品名称,数量,单价,小计
+body_end_split: L-2
+
+#模式二
+${merchantName}
+${orderTime:yyyy--MM-dd HH:mm:ss}
+${tableNo:\d}
+${serviceNo:\d}
