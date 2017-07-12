@@ -1,0 +1,16 @@
+###################################
+#   初步确定以行号为中收的模板模式
+#   这里的变量名可以有个初步的变量词典
+###################################
+
+merchantName:L0,(\w)
+orderTime:L1,订单时间： ('yyyy-MM-dd HH:mm:ss')
+tableNo:L2,桌号:(\d)
+serviceNO:L3,服务员号：(\d{2})
+lineSplitter:L4，L-2
+
+#商品名，数量，单价，小计,原有的汉字意义不大，就是和英文的映射
+orderItemDefine:L6,itemName,itemNumber,itemPrice,itemSummary
+orderItemDefinePattern:((\w+)\s+(\d+)\s+(\d)+\s+(\d+\.\d{2}))
+
+orderSummary:L-1,合计: (\d+\.\d{2})
