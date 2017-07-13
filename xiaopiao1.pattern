@@ -3,7 +3,7 @@
 #   这里的变量名可以有个初步的变量词典
 ###################################
 
-merchantName,L0,(\w)
+merchantName,L0,(\w+)
 orderTime,L1,订单时间： ('yyyy-MM-dd HH:mm:ss')
 tableNo,L2,桌号:(\d)
 serviceNO,L3,服务员号：(\d{2})
