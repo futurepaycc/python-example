@@ -1,6 +1,7 @@
 #coding:utf-8
 
 # TODO:正则表达式抽取处理,主内容区有多个分组
+# TODO:改造成单行单元定义处理、单行多元素及主体行处理
 import sys,re
 #获取当前模块对像，用于反射
 thismodule = sys.modules[__name__]
